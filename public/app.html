@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Web Team Chat</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+
+</head>
+
+<body ng-app="myApp">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <a class="navbar-brand" href="#">Web Team Chat</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid wrapper" ng-controller="channelsController">
+    <div class="row">
+
+        <div class="col-sm-3 col-md-2 sidebar" >
+            <!--TODO fix proble with thing that is over the item -->
+            <ul class="nav nav-sidebar">
+
+                <div id="new-channel" class="input-group">
+                    <input type="text" ng-model="newChannelName" ng-keyup="$event.keyCode == 13 && newChannel()" class="form-control" placeholder="Channel name" aria-describedby="basic-addon1">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="newChannel()">New</button>
+                    </div>
+                </div>
+
+                <li  ng-repeat="channel in channels" ng-class="{'selected': currentChannel === channel._id}">
+                    <div class="channel-list-item">
+                        <a ng-click="changeChannel(channel)" href="#">{{channel.title}}</a>
+                        <button type="button" ng-click="deleteChannel(channel._id)" class="btn btn-danger btn-xsm right">
+                            <span class="glyphicon glyphicon-trash mini-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">{{currentChannelName}}</h1>
+            <div id="chat">
+                <ul>
+                    <li ng-repeat="msg in chatMessages">{{msg.message}}</li>
+                </ul>
+            </div>
+
+            <div id="bottom" class="input-group bottom">
+                <input type="text" ng-model="msg" ng-keyup="$event.keyCode == 13 && sendMsg()" class="form-control" placeholder="msg" aria-describedby="basic-addon1">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="sendMsg()">Send</button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+<script src="/js/angular.min.js"></script>
+<script src="/js/core.js"></script>
+
+</body>
+</html>

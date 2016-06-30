@@ -1,0 +1,17 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "main": "server.js",
+  "dependencies": {
+    "express" : "^4.13.4",
+    "mongoose" : "^4.4.12",
+    "bootstrap" : "latest",
+    "jquery" : "^2.1.x",
+    "body-parser": "^1.4.3",
+    "angular":"^1.5.x",
+    "socket.io":"latest",
+    "acl":"latest",
+    "connect-mongo":"latest",
+    "express-session":"latest"
+  }
+}
