@@ -15,8 +15,8 @@ module.exports = function(io){
 
         client.on("message",function(data){
             var Message = mongoose.model("Message");
-            Message.create({"message":data.message,"channelId":data.channelId,"author":"none"});
-            io.sockets.in(data.channelId).emit("message",data.message);
+            Message.create({"message":data.message,"channelId":data.channelId,"author":data.author});
+            io.sockets.in(data.channelId).emit("message",{"message":data.message,"author":data.author});
         });
     })
 }

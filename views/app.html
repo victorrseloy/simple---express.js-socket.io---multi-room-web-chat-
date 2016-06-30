@@ -64,9 +64,22 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">{{currentChannelName}}</h1>
             <div id="chat">
-                <ul>
-                    <li ng-repeat="msg in chatMessages">{{msg.message}}</li>
-                </ul>
+
+
+                <div class="msg" ng-repeat="msg in chatMessages">
+                    <div class="avatar-wrapper col-sm-1">
+                        <a href="#" class="avatar" style="background: url('http://wiki.ucar.edu/images/icons/profilepics/default.png')"></a>
+                    </div>
+                    <div class="msg-content col-sm-11">
+                        <span class="msg-author">{{msg.author}}</span>
+                        <span class="msg-text">{{msg.message}}</span>
+                    </div>
+
+                </div>
+
+                <!--<ul>-->
+                    <!--<li ng-repeat="msg in chatMessages">{{msg.message}}</li>-->
+                <!--</ul>-->
             </div>
 
             <div id="bottom" class="input-group bottom">

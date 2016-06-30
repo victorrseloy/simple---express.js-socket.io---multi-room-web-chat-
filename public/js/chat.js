@@ -12,7 +12,7 @@ function Chat(){
         var $scope = angular.element(appElement).scope();
         $scope.$apply(function() {
 
-            var obj = {"channelId":$scope.channel,"message":data};
+            var obj = {"channelId":$scope.channel,"message":data.message,"author":data.author};
             if(!$scope.chatMessages.push){
                 $scope.chatMessages = new Array();
 
@@ -22,8 +22,8 @@ function Chat(){
         });
     })
 
-    this.sendMsg = function(channel,message){
-        socket.emit("message",{"message":message,"channelId":channel})
+    this.sendMsg = function(channel,message,user){
+        socket.emit("message",{"message":message,"channelId":channel,"author":user});
     };
 
     this.join = function(channel){

@@ -5,6 +5,14 @@ app.controller("channelsController", function ($http, $scope) {
     $scope.newChannelName = "";
     $scope.chatMessages = ""
 
+    $scope.getCurretUser = function(){
+        $http.get("/user/current").success(function(data,status,headers,config){
+            $scope.user = data;
+        });
+    };
+
+    $scope.getCurretUser();
+
     $scope.load =   function load() {
         $http.get("/channel").success(function (data, status, headers, config) {
             $scope.channels = data;
@@ -53,8 +61,7 @@ app.controller("channelsController", function ($http, $scope) {
 
     $scope.sendMsg = function () {
         console.log($scope.channel+ " - " + $scope.msg );
-        var obj = {"channelId":$scope.currentChannel,"message":$scope.msg};
-        chat.sendMsg($scope.currentChannel,$scope.msg);
+        chat.sendMsg($scope.currentChannel,$scope.msg,$scope.user.name);
         $scope.msg = "";
 
     }
