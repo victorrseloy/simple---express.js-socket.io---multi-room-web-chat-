@@ -56,7 +56,7 @@ require("./controllers/chatController")(io);
 
 //catch all route
 app.get("*",aclValidation.checkPermission("app","view"),function (req,res) {
-    res.sendfile("./public/app.html")
+    res.sendfile("./views/app.html")
 });
 
 

@@ -46,7 +46,7 @@ module.exports = function (wrapper) {
                                 // user has access rights, proceed to allow access to the route
                                 next();
                             } else {
-                                res.redirect('/login.html');
+                                res.redirect('/login');
                                 // user access denied
                                 //var checkError = new Error("user does not have permission to perform this action on this resource");
                                 //next(checkError);  // stop access to route
