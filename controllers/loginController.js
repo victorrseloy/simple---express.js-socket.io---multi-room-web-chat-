@@ -4,8 +4,11 @@ var path = require('path');
 
 module.exports = function(app,acl){
     app.get("/login",function(req,res){
-
         res.sendFile(path.resolve('views/login.html'));
+    });
+
+    app.get("/register",function(req,res){
+        res.sendFile(path.resolve('views/register.html'));
     })
 
     app.post("/login",function(req,res){

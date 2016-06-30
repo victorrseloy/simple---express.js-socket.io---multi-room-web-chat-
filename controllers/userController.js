@@ -5,7 +5,10 @@ module.exports = function(app,acl){
         var User = mongoose.model("User");
         User.create(req.body,function (err,usr) {
             acl.wrapper.acl.addUserRoles(usr._id.toString(),"registered");
-            res.sendStatus(200);
+
+            //TODO: check if json and return ok
+            res.redirect("/login");
+
         });
 
     });
